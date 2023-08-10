@@ -9,7 +9,7 @@ function App() {
   const {bgColor, textColor} = useContext(GameContext)
 
   return (
-    <div className={`w-screen min-h-screen flex flex-col gap-4 items-center pt-4 ${bgColor} ${textColor}`}>
+    <div className={`pb-10 -w-screen min-h-screen flex flex-col gap-4 items-center pt-4 ${bgColor} ${textColor}`}>
       <NavBar></NavBar>
       <View></View>
     </div>
