@@ -14,10 +14,14 @@ const NavBar = () => {
     }, [theme] )
 
     return (
-        <div className="flex gap-2 w-[80%]">
-            <button className={"w-12 h-8 rounded-lg flex items-center justify-center " + bgModal} onClick={() => toggleTheme()}>{icon}</button>
-            <button className={"w-12 h-8 rounded-lg flex items-center justify-center " + bgModal} onClick={() => openSettings()}><IoMdSettings /></button>
-            {settings ? <SettingsModal /> : null}
+        <div className="flex flex-col gap-4 w-[80%]">
+            <div className="flex gap-2 flex-wrap pl-3 lg:pl-0 ">
+                <button className={`w-12 h-8 lg:w-14 lg:h-10 rounded-lg flex items-center justify-center ${theme == 'light' ? 'hover:bg-zinc-300' : 'hover:bg-zinc-700'} ` + bgModal} onClick={() => toggleTheme()}>{icon}</button>
+                <button className={`w-12 h-8 lg:w-14 lg:h-10 rounded-lg flex items-center justify-center lg:mr-2 mr-20 ${theme == 'light' ? 'hover:bg-zinc-300' : 'hover:bg-zinc-700'} ` + bgModal} onClick={() => openSettings()}><IoMdSettings /></button>
+                {settings ? <SettingsModal /> : null}
+                <button className={` h-10 w-32 lg:h-10 rounded-lg flex items-center justify-center ${theme == 'light' ? 'hover:bg-zinc-300' : 'hover:bg-zinc-700'} ` + bgModal} onClick={() => goToMain()}>Training</button>
+                <button className={` h-10 w-32 lg:h-10 rounded-lg flex items-center justify-center ${theme == 'light' ? 'hover:bg-zinc-300' : 'hover:bg-zinc-700'} ` + bgModal} onClick={() => goToWeapons()}>Weapons</button>
+            </div>
         </div>
     )
 }
