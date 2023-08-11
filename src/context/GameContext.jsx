@@ -23,8 +23,11 @@ export const GameProvider = ({children}) => {
     const [health, setHealth] = useLocalStorage('health', 10)
     const [power, setPower] = useLocalStorage('power', 10)
     const [nvlPrice, setNvlPrice] = useLocalStorage('nvlPrice', 10)
-    
+    const [view, setView] = useState(0)
+    const [soulsMulti ,setSoulsMulti] = useLocalStorage('soulsMulti', 1)
+    const [soulsMulti2 ,setSoulsMulti2] = useLocalStorage('soulsMulti2', 1)
 
+    const [up1Flag, setUp1Flag] = useLocalStorage('up1Flag', false)
 
     const toggleTheme = () => {
         if (theme == 'light') {
@@ -53,6 +56,8 @@ export const GameProvider = ({children}) => {
         setNvl(0)
         setPower(10)
         setHealth(10)
+        setSoulsMulti(1)
+        setNvlPrice(10)
         setStrFlag(false)
         setDexFlag(false)
         setIntFlag(false)
@@ -66,7 +71,7 @@ export const GameProvider = ({children}) => {
     const buyVit = () => {
         if (souls >= nvlPrice) {
             setSouls((prev) => prev - nvlPrice)
-            setNvlPrice((prev) => prev * 1.30)
+            setNvlPrice((prev) => prev * 1.20)
             setVit((prev) => prev + 1)
             setNvl((prev) => prev + 1)
             return
@@ -77,7 +82,7 @@ export const GameProvider = ({children}) => {
     const buyStr = () => {
         if (souls >= nvlPrice) {
             setSouls((prev) => prev - nvlPrice)
-            setNvlPrice((prev) => prev * 1.30)
+            setNvlPrice((prev) => prev * 1.20)
             setStr((prev) => prev + 1)
             setNvl((prev) => prev + 1)
             return
@@ -88,7 +93,7 @@ export const GameProvider = ({children}) => {
     const buyDex = () => {
         if (souls >= nvlPrice) {
             setSouls((prev) => prev - nvlPrice)
-            setNvlPrice((prev) => prev * 1.30)
+            setNvlPrice((prev) => prev * 1.20)
             setDex((prev) => prev + 1)
             setNvl((prev) => prev + 1)
             return
@@ -99,7 +104,7 @@ export const GameProvider = ({children}) => {
     const buyInt = () => {
         if (souls >= nvlPrice) {
             setSouls((prev) => prev - nvlPrice)
-            setNvlPrice((prev) => prev * 1.30)
+            setNvlPrice((prev) => prev * 1.20)
             setInt((prev) => prev + 1)
             setNvl((prev) => prev + 1)
             return
@@ -112,17 +117,17 @@ export const GameProvider = ({children}) => {
     useEffect(() => {
         const timer = setInterval(() => {
            if (soulsFlag) {
-               setSouls((prev) => prev + 1)
+               setSouls((prev) => prev + (soulsMulti * soulsMulti2))
            }
         }, 1000)
-        setHealth(() => (vit / 5) + 10)
+        setHealth(() => (vit * 1.15) + 10)
         setPower(() => (dex / 10) + (int / 10) + (str /10) + 10)
         
         return () => clearTimeout(timer)
        })
 
     return (
-    <GameContext.Provider value={{nvlPrice, buyVit, buyDex, buyStr, buyInt, theme, toggleTheme, settings, openSettings, bgColor, bgModal, textColor, str, dex, int, souls, vit, nvl, health, power, soulsFlag, resetGame, activeSouls, strFlag, dexFlag, intFlag}}>
+    <GameContext.Provider value={{up1Flag, setUp1Flag, view, setView, setSoulsMulti, nvlPrice, buyVit, buyDex, buyStr, buyInt, theme, toggleTheme, settings, openSettings, bgColor, bgModal, textColor, str, dex, int, souls, vit, nvl, health, power, soulsFlag, resetGame, activeSouls, strFlag, dexFlag, intFlag}}>
         {children}
     </GameContext.Provider>
     )
