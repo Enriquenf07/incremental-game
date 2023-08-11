@@ -2,9 +2,11 @@ import { useContext, useEffect, useState } from "react"
 import { GameContext } from "../../../context/GameContext"
 import General from "./General"
 import StrUp from "./StrUp"
+import DexUp from "./DexUp"
+import IntUp from "./IntUp"
+import Prestige from "./Prestige"
 
 const Upgrades = () => {
-    const {bgModal, str, dex, int, activeSouls, soulsFlag, theme, souls, vit, nvl, health, power, nvlPrice, buyVit, buyInt, buyStr, buyDex} = useContext(GameContext)
     const [bg, setBg] = useState("bg-gray-200")
     const [upView, setUpView] = useState(0)
     const [actualView, setActualView] = useState(<General />)
@@ -20,15 +22,15 @@ const Upgrades = () => {
         }
         if (upView == 2) {
             setBg("bg-yellow-100")
-            setActualView(<></>)
+            setActualView(<DexUp />)
         }
         if (upView == 3) {
             setBg("bg-blue-200")
-            setActualView(<></>)
+            setActualView(<IntUp />)
         }
         if (upView == 4) {
             setBg("bg-purple-200")
-            setActualView(<></>)
+            setActualView(<Prestige />)
         }
     }, [upView])
 

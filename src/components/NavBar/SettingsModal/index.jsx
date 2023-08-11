@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { GameContext } from "../../../context/GameContext"
 
 const SettingsModal = () => {
-    const {toggleTheme, theme, bgModal, openSettings, settings, bgColor, resetGame} = useContext(GameContext)
+    const {toggleTheme, theme, bgModal, bgColor, resetGame} = useContext(GameContext)
 
 
     return (
@@ -11,7 +11,6 @@ const SettingsModal = () => {
             <div className="flex flex-row">
                 <button className={`w-16 h-8 rounded-xl flex items-center justify-center ${theme == 'light' ? 'hover:bg-zinc-300' : 'hover:bg-zinc-700'} ` + bgModal} onClick={() => resetGame()}>Reset</button>
             </div>
-            
         </div>
     )
 }
