@@ -4,7 +4,7 @@
 
 [Play the game!](https://enriquenf07.github.io/incremental-game/)
 
-Version: 0.2.2
+Version: 0.3
 
 Add Upgrade, Shop, Boss and Achievements menus.
 
