@@ -24,11 +24,11 @@ export const GameProvider = ({children}) => {
     const [soulsMulti ,setSoulsMulti] = useLocalStorage('soulsMulti', 1)
     const [soulsMulti2 ,setSoulsMulti2] = useLocalStorage('soulsMulti2', 1)
     const [strSoulsMulti ,setStrSoulsMulti] = useLocalStorage('strSoulsMulti', 1)
-    const [strSoulsCo ,setStrSoulsCo] = useLocalStorage('strSoulsCo', 0.20)
+    const [strSoulsCo ,setStrSoulsCo] = useLocalStorage('strSoulsCo', 0.25)
     const [dexSoulsMulti ,setDexSoulsMulti] = useLocalStorage('dexSoulsMulti', 1)
-    const [dexSoulsCo ,setDexSoulsCo] = useLocalStorage('dexSoulsCo', 0.20)
+    const [dexSoulsCo ,setDexSoulsCo] = useLocalStorage('dexSoulsCo', 0.25)
     const [intSoulsMulti ,setIntSoulsMulti] = useLocalStorage('intSoulsMulti', 1)
-    const [intSoulsCo ,setIntSoulsCo] = useLocalStorage('intSoulsCo', 0.20)
+    const [intSoulsCo ,setIntSoulsCo] = useLocalStorage('intSoulsCo', 0.25)
     const [powerSoulsMulti ,setPowerSoulsMulti] = useLocalStorage('powerSoulsMulti', 1)
 
     const [up1Flag, setUp1Flag] = useLocalStorage('up1Flag', false)
@@ -185,7 +185,7 @@ export const GameProvider = ({children}) => {
     useEffect(() => {
         const timer = setInterval(() => {
            if (soulsFlag) {
-               setSouls((prev) => prev + (soulsMulti * soulsMulti2 * strSoulsMulti * dexSoulsMulti * intSoulsMulti ) ** 1.02 + powerSoulsMulti)
+               setSouls((prev) => prev + (soulsMulti * soulsMulti2 * strSoulsMulti * dexSoulsMulti * intSoulsMulti * powerSoulsMulti) ** 1.04 )
             }
             
           }, 1000)
@@ -195,8 +195,8 @@ export const GameProvider = ({children}) => {
         setStrSoulsMulti(() => strUp1 ? str * strSoulsCo : 1)
         setDexSoulsMulti(() => dexUp1 ? dex * dexSoulsCo: 1)
         setIntSoulsMulti(() => intUp1 ? int * intSoulsCo : 1)
-        setPowerSoulsMulti(() => power * 2.55)
-        setSoulsMulti2(() => boss * 1.07)
+        setPowerSoulsMulti(() => power * 0.4)
+        setSoulsMulti2(() => boss > 1 ? boss * 0.5 : boss)
         if (str == 10 && dex == 10 && int == 10 && vit == 10) {
             setStr((prev) => prev + 5)
             setInt((prev) => prev + 5)
