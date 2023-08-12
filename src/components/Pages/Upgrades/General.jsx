@@ -5,7 +5,7 @@ import { soulsMultiFunc } from "../../../helper/upgrades"
 
 
 const General = () => {
-    const {setSoulsMulti, nvl, up1Flag, setUp1Flag, up2Flag} = useContext(GameContext)
+    const {setSoulsMulti, nvl, up1Flag, setUp1Flag, up2Flag, setUp2Flag} = useContext(GameContext)
     
     const [bg1, setBg1] = useState('')
     const [bg2, setBg2] = useState('')
@@ -13,7 +13,7 @@ const General = () => {
 
     useEffect(() => {
         up1Flag ? setBg1('bg-[#d4af37]') : null
-        up2Flag ? setBg1('bg-[#d4af37]') : null
+        up2Flag ? setBg2('bg-[#d4af37]') : null
     }, [up1Flag, up2Flag])
 
     return (
@@ -22,7 +22,7 @@ const General = () => {
                 <p>You become stronger. Kill faster!</p>
                 <p>unlocks: lvl 10</p>
             </button>
-            {up1Flag ? <button className={`flex flex-col text-zinc-700 text-xs w-[7rem] h-[5rem] justify-center items-center rounded-xl border ${bg2} border-black`} onClick={() => soulsMultiFunc(1)}>
+            {up1Flag ? <button className={`flex flex-col text-zinc-700 text-xs w-[7rem] h-[5rem] justify-center items-center rounded-xl border ${bg2} border-black`} onClick={() => soulsMultiFunc(1, setSoulsMulti, nvl, up2Flag, setUp2Flag)}>
                 <p>You become stronger. Kill faster!</p>
                 <p>Unlocks: lvl 100</p>
             </button> : null}
