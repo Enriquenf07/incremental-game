@@ -18,7 +18,7 @@ const Main = () => {
                         <button className={`${bgModal} ${theme == 'light' ? ' hover:bg-zinc-300': ' hover:bg-zinc-700'} text-lg font-medium  rounded-xl w-[12rem] h-[3rem]`} onClick={() => buyDex()}>Dexterity +</button>
                         <button className={`${bgModal} ${theme == 'light' ? ' hover:bg-zinc-300': ' hover:bg-zinc-700'} text-lg font-medium  rounded-xl w-[12rem] h-[3rem]`} onClick={() => buyInt()}>Intelligence +</button>
                     </div>
-                    <p>Souls for next vitality: {formatNumber(nvlPrice / 10)} </p>
+                    <p>Souls for next vitality: {formatNumber(nvlPrice / 1.5)} </p>
                     <button className={`${bgModal} ${theme == 'light' ? ' hover:bg-zinc-300': ' hover:bg-zinc-700'} text-lg font-medium  rounded-xl w-[12rem] h-[3rem]`} onClick={() => buyVit()}>Vitality +</button>
                 </div>
             </>

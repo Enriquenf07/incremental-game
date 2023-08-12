@@ -5,12 +5,12 @@ import { GameContext } from "../../context/GameContext"
 
 export function soulsMultiFunc (i, setSoulsMulti, nvl, flag, setFlag) {
 
-    if (nvl >= 10 && !flag && i==0) {
+    if (nvl >= 10 && !flag && i == 0) {
         setSoulsMulti((prev) => prev * 2)
         setFlag(true) 
         return
     }
-    if (nvl >= 100 && !flag && i==1) {
+    if (nvl >= 100 && !flag && i == 1) {
         setSoulsMulti((prev) => prev * 2)
         setFlag(true)
         return
