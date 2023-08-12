@@ -118,7 +118,7 @@ export const GameProvider = ({children}) => {
                 setSoulsMulti((prev) => prev * 1.05)
             }
             setSouls((prev) => prev - nvlPrice / 1.5)
-            setNvlPrice((prev) => prev * 1.2)
+            setNvlPrice((prev) => prev * 1.08)
             setVit((prev) => prev + 1)
             setNvl((prev) => prev + 1)
             return
@@ -136,7 +136,7 @@ export const GameProvider = ({children}) => {
                 setSoulsMulti((prev) => prev * 1.05)
             }
             setSouls((prev) => prev - nvlPrice)
-            setNvlPrice((prev) => prev * 1.2)
+            setNvlPrice((prev) => prev * 1.1)
             setStr((prev) => prev + 1)
             setNvl((prev) => prev + 1)
             return
@@ -154,7 +154,7 @@ export const GameProvider = ({children}) => {
                 setSoulsMulti((prev) => prev * 1.05)
             }
             setSouls((prev) => prev - nvlPrice)
-            setNvlPrice((prev) => prev * 1.2)
+            setNvlPrice((prev) => prev * 1.1)
             setDex((prev) => prev + 1)
             setNvl((prev) => prev + 1)
             return
@@ -172,7 +172,7 @@ export const GameProvider = ({children}) => {
                 setSoulsMulti((prev) => prev * 1.05)
             }
             setSouls((prev) => prev - nvlPrice)
-            setNvlPrice((prev) => prev * 1.2)
+            setNvlPrice((prev) => prev * 1.1)
             setInt((prev) => prev + 1)
             setNvl((prev) => prev + 1)
             return
