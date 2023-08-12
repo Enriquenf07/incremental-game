@@ -185,18 +185,18 @@ export const GameProvider = ({children}) => {
     useEffect(() => {
         const timer = setInterval(() => {
            if (soulsFlag) {
-               setSouls((prev) => prev + (soulsMulti * soulsMulti2 * strSoulsMulti * dexSoulsMulti * intSoulsMulti * powerSoulsMulti) ** 1.04 )
+               setSouls((prev) => prev + (soulsMulti * soulsMulti2 * strSoulsMulti * dexSoulsMulti * intSoulsMulti * powerSoulsMulti) ** 1.04 + 1 )
             }
             
           }, 1000)
         setHealth(() => (vit * 1.15) + 10)
         setWeaponPM((weapon1 * 5) + (weapon2 * 5) + (weapon3 * 5) + (weapon4 * 5))
         setPower(() => (dex / 10) + (int / 10) + (str / 10) + 1 + (weaponPM * 1.5))
-        setStrSoulsMulti(() => strUp1 ? str * strSoulsCo : 1)
-        setDexSoulsMulti(() => dexUp1 ? dex * dexSoulsCo: 1)
-        setIntSoulsMulti(() => intUp1 ? int * intSoulsCo : 1)
+        setStrSoulsMulti(() => strUp1 ? str * strSoulsCo + 1 : 1)
+        setDexSoulsMulti(() => dexUp1 ? dex * dexSoulsCo + 1: 1)
+        setIntSoulsMulti(() => intUp1 ? int * intSoulsCo + 1 : 1)
         setPowerSoulsMulti(() => power * 0.4)
-        setSoulsMulti2(() => boss > 1 ? boss * 0.5 : boss)
+        setSoulsMulti2(() => boss > 1 ? boss * 0.5 + 1 : boss + 1)
         if (str == 10 && dex == 10 && int == 10 && vit == 10) {
             setStr((prev) => prev + 5)
             setInt((prev) => prev + 5)
