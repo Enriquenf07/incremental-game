@@ -51,7 +51,7 @@ export const GameProvider = ({children}) => {
     const [prestige, setPrestige] = useLocalStorage('prestige', 0)
     const [prestigeGain, setPrestigeGain] = useLocalStorage('prestigeGain', 0)
     const [name, setName] = useLocalStorage('name', '');
-    const [build, setBuild] = useLocalStorage('build', 999);
+    const [build, setBuild] = useLocalStorage('build', 0);
     const [time, setTime] = useLocalStorage('time', 10)
     const [buildFlag, setBuildFlag] = useLocalStorage('buildFlag', false)
     const [weaponPM2, setWeaponPM2] = useLocalStorage('weaponPM2', 1)
@@ -277,26 +277,22 @@ export const GameProvider = ({children}) => {
             setStr((prev) => prev + 2)
             setDex((prev) => prev + 2)
         }
-        if (!buildFlag) {
+        if (buildFlag) {
             if (build == 1) {
                 setStr(10)
-            }
-    
-            if (build == 2) {
-                setWeaponPriceMulti(0.7)
             }
     
             if (build == 3) {
                 setTime(8)
             }
-            setBuildFlag(true)
+            setBuildFlag(false)
         }
         
         return () => clearTimeout(interval)
        })
 
     return (
-    <GameContext.Provider value={{setWeaponPM2, prestigeGame, name, build, setName, setBuild, prestige, setPrestige, prestigeGain, setPrestigeGain, soulsGain, setBoss, boss, weaponM, weapon1, weapon2, weapon3, weapon4, setWeapon1, setWeapon2, setWeapon3, setWeapon4, strUp1, dexUp1, intUp1, setStrSoulsCo, setSoulsMulti2, setStrSoulsMulti, setStrUp1, setDexUp1, setIntUp1, up1Flag, setUp1Flag, up2Flag, setUp2Flag, view, setView, setSoulsMulti, nvlPrice, buyVit, buyDex, buyStr, buyInt, theme, toggleTheme, settings, openSettings, bgColor, bgModal, textColor, str, dex, int, souls, vit, nvl, health, power, soulsFlag, resetGame, activeSouls, setSouls}}>
+    <GameContext.Provider value={{setWeaponPM2, prestigeGame, name, build, setBuildFlag, setName, setBuild, prestige, setPrestige, prestigeGain, setPrestigeGain, soulsGain, setBoss, boss, weaponM, weapon1, weapon2, weapon3, weapon4, setWeapon1, setWeapon2, setWeapon3, setWeapon4, strUp1, dexUp1, intUp1, setStrSoulsCo, setSoulsMulti2, setStrSoulsMulti, setStrUp1, setDexUp1, setIntUp1, up1Flag, setUp1Flag, up2Flag, setUp2Flag, view, setView, setSoulsMulti, nvlPrice, buyVit, buyDex, buyStr, buyInt, theme, toggleTheme, settings, openSettings, bgColor, bgModal, textColor, str, dex, int, souls, vit, nvl, health, power, soulsFlag, resetGame, activeSouls, setSouls}}>
         {children}
     </GameContext.Provider>
     )

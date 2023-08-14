@@ -5,8 +5,7 @@ import { formatNumber } from "../../../helper/formatNumber"
 
 
 const Prestige = () => {
-    const {setSoulsMulti, nvl, up1Flag, setUp1Flag, prestige, prestigeGame, boss, setPrestige, setBuild} = useContext(GameContext)
-    const [prestigeGain, setPrestigeGain] = useState(0)
+    const {setSoulsMulti, nvl, up1Flag, setUp1Flag, prestige, prestigeGame, boss, setPrestige, setBuild, setPrestigeGain, prestigeGain} = useContext(GameContext)
     const [bg1, setBg1] = useState('')
     const [bg2, setBg2] = useState('')
     const [bg3, setBg3] = useState('')
@@ -18,8 +17,6 @@ const Prestige = () => {
     const handlePrestige = () => {
         if (boss > 10) {
             prestigeGame()
-            
-            console.log('ola')
         }
     }
 

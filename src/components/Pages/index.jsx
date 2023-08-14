@@ -13,6 +13,15 @@ const View = () => {
     const [buildName, setBuildName] = useState('None')
 
     useEffect(() => {
+        if (build == 1) {
+            setBuildName('Knight')
+        }
+        if (build == 2) {
+            setBuildName('Thief')
+        }
+        if (build == 3) {
+            setBuildName('Sorcerer')
+        }
         if (view == 0) {
             setCurrentView(<Main />)
             return
@@ -34,15 +43,7 @@ const View = () => {
             return
         }
 
-        if (build == 1) {
-            setBuildName('Knight')
-        }
-        if (build == 2) {
-            setBuildName('Thief')
-        }
-        if (build == 3) {
-            setBuildName('Sorcerer')
-        }
+        
     }, [view])
 
     
