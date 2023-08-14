@@ -27,7 +27,7 @@ const Achievements = () => {
     return (
             <>
                 <div className={`min-h-[25rem] lg:h-[30rem] w-[80%] pt-2 px-0 lg:px-8 lg:pt-8 lg:min-w-0 lg:w-[55rem] lg:items-start items-center flex flex-col rounded-3xl lg:rounded-xl text-zinc-700 flex-wrap gap-8 ${bg}`}>
-                        <div className="w-full p-4 flex flex-col items-center">
+                        <div className="w-full p-4 flex flex-col items-center h-[6rem] lg:h-[4rem]">
                             <h1 className="text-lg font-medium">{text1}</h1>
                             <p>{text2}</p>    
                         </div> 

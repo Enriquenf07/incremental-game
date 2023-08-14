@@ -1,4 +1,4 @@
-export function formatNumber(n) {
+export function formatNumber(n, i=0) {
     if (n >= 1000000000){
         return `${(n / 1000000000).toFixed(2)}T`
     }  
@@ -8,5 +8,5 @@ export function formatNumber(n) {
     if (n >= 1000){
         return `${(n / 1000).toFixed(2)}K`
     }
-    return n.toFixed()
+    return i == 1 ? n.toFixed(2) : n.toFixed()
 }

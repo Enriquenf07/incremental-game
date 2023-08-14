@@ -8,8 +8,9 @@ import Achievements from "./Achievements"
 import { formatNumber } from "../../helper/formatNumber"
 
 const View = () => {
-    const {bgModal, str, dex, int, souls, vit, nvl, health, power, view} = useContext(GameContext)
+    const {name, build, bgModal, str, dex, int, souls, soulsGain, vit, nvl, health, power, view, prestige} = useContext(GameContext)
     const [currentView, setCurrentView] = useState(<Main />)
+    const [buildName, setBuild] = useState('None')
 
     useEffect(() => {
         if (view == 0) {
@@ -32,20 +33,40 @@ const View = () => {
             setCurrentView(<Achievements />)
             return
         }
+
+        if (build == 1) {
+            setBuild('Knight')
+        }
+        if (build == 2) {
+            setBuild('Thief')
+        }
+        if (build == 3) {
+            setBuild('Sorcerer')
+        }
     }, [view])
+
+    
 
     return(
         <div className={"w-full lg:w-[80%] lg:block flex justify-center"}>
             <div className={"min-h-[30rem] w-full lg-w-fit flex gap-6 lg:gap-8 flex-wrap lg:justify-start justify-center"}>
-                <div className={`min-h-[10rem] py-8 lg:py-0 lg:min-h-[30rem] w-[80%] lg:w-[18rem] text-lg font-medium flex flex-col gap-1 justify-center items-center rounded-3xl lg:rounded-xl ${bgModal}`}>
-                    <p>Souls: {formatNumber(souls)}</p>
-                    <p className="pb-4">Level: {formatNumber(nvl)}</p>
-                    <p>Vit: {formatNumber(vit)}</p>
-                    <p>Str: {formatNumber(str)}</p>
-                    <p>Dex: {formatNumber(dex)}</p>
-                    <p className="pb-4">Int: {formatNumber(int)}</p>
-                    <p>Health: {formatNumber(health)}</p>
-                    <p>Power: {formatNumber(power)}</p>
+                <div className="flex lg:flex-col flex-col-reverse gap-6 lg:gap-3 w-full lg:w-fit items-center">
+                    <div className={`min-h-[10rem] py-8 lg:py-0 lg:min-h-[30rem] w-[80%] lg:w-[18rem] text-lg font-medium flex flex-col gap-1 justify-center items-center rounded-3xl lg:rounded-xl ${bgModal}`}>
+                        <p>Souls: {formatNumber(souls)}</p>
+                        <p>Souls/Sec: {formatNumber(soulsGain)}</p>
+                        <p className="pb-4">Level: {formatNumber(nvl)}</p>
+                        <p>Vit: {formatNumber(vit)}</p>
+                        <p>Str: {formatNumber(str)}</p>
+                        <p>Dex: {formatNumber(dex)}</p>
+                        <p className="pb-4">Int: {formatNumber(int)}</p>
+                        <p>Health: {formatNumber(health)}</p>
+                        <p>Power: {formatNumber(power)}</p>
+                    </div>
+                    <div className={`min-h-fit py-8  w-[80%] lg:w-[18rem] text-lg font-medium flex flex-col gap-1 justify-center items-center rounded-3xl lg:rounded-xl ${bgModal}`}>
+                        <p>Name: {name}</p>
+                        <p>Class: {buildName} </p>
+                        <p>Prestige: {prestige}</p>
+                    </div>
                 </div>
                 {currentView}
             </div>

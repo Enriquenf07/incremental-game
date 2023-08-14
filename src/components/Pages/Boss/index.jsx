@@ -5,7 +5,7 @@ import { formatNumber } from "../../../helper/formatNumber"
 
 
 const Boss = () => {
-    const {power, health, setBoss, boss, setSouls} = useContext(GameContext)
+    const {power, health, setBoss, boss, setSouls, setPrestigeGain} = useContext(GameContext)
     const [bg, setBg] = useState("bg-red-200")
     const [bossName, setBossName] = useState('Tutorial Boss')
     const [bossHealth, setBossHealth] = useState(0)
@@ -18,9 +18,13 @@ const Boss = () => {
 
     function fight(){
         if (health / bossPower > bossHealth / power){
-            setSouls((prev) => prev + (1000 * boss ** 1.01))
+            setSouls((prev) => prev + (10000 * boss ** 1.05))
             setBoss((prev) => prev + 1)
+            if (boss % 10 == 0 && boss > 1) {
+                setPrestigeGain((prev) => prev + 1)
+            }
         }
+        
     }
 
     return (
