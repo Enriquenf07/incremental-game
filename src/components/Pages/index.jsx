@@ -10,7 +10,7 @@ import { formatNumber } from "../../helper/formatNumber"
 const View = () => {
     const {name, build, bgModal, str, dex, int, souls, soulsGain, vit, nvl, health, power, view, prestige} = useContext(GameContext)
     const [currentView, setCurrentView] = useState(<Main />)
-    const [buildName, setBuild] = useState('None')
+    const [buildName, setBuildName] = useState('None')
 
     useEffect(() => {
         if (view == 0) {
@@ -35,13 +35,13 @@ const View = () => {
         }
 
         if (build == 1) {
-            setBuild('Knight')
+            setBuildName('Knight')
         }
         if (build == 2) {
-            setBuild('Thief')
+            setBuildName('Thief')
         }
         if (build == 3) {
-            setBuild('Sorcerer')
+            setBuildName('Sorcerer')
         }
     }, [view])
 
@@ -64,7 +64,7 @@ const View = () => {
                     </div>
                     <div className={`min-h-fit py-8  w-[80%] lg:w-[18rem] text-lg font-medium flex flex-col gap-1 justify-center items-center rounded-3xl lg:rounded-xl ${bgModal}`}>
                         <p>Name: {name}</p>
-                        <p>Class: {buildName} </p>
+                        <p>Build: {buildName} </p>
                         <p>Prestige: {prestige}</p>
                     </div>
                 </div>

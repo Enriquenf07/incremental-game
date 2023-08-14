@@ -54,7 +54,8 @@ export const GameProvider = ({children}) => {
     const [build, setBuild] = useLocalStorage('build', 999);
     const [time, setTime] = useLocalStorage('time', 10)
     const [buildFlag, setBuildFlag] = useLocalStorage('buildFlag', false)
-    const [weaponPM2, setWeaponPM2] = useLocalStorage('weaponPM2', 0)
+    const [weaponPM2, setWeaponPM2] = useLocalStorage('weaponPM2', 1)
+    const [prestigeTotal, setPrestigeTotal] = useLocalStorage('totalPrestige', 0)
 
 
 
@@ -130,7 +131,8 @@ export const GameProvider = ({children}) => {
         setNvlPrice(10)
 
         setBuild(0)
-        setPrestige(prestigeGain)
+        setPrestige(prev => prev + prestigeGain)
+        setPrestigeTotal(prev => prev + 1)
     
         setUp1Flag(false)
         setUp2Flag(false)
@@ -156,8 +158,6 @@ export const GameProvider = ({children}) => {
         setBoss(1)
         setWeaponM(0)
         setName('')
-
-        
     }
 
     const activeSouls = () => {
@@ -248,12 +248,22 @@ export const GameProvider = ({children}) => {
         return
     }
 
+    const [w, setW] = useLocalStorage('w',0)
 
 
     useEffect(() => {
-        const timer = setInterval(() => {
-           
-          }, 1000)
+        const interval = setInterval(() => {
+            if (soulsFlag) {
+                if (w > 100) {
+                    setSouls((prev) => prev + soulsGain )
+                    setW(0)
+                }
+                setW(prev => prev + 1)
+                }else{
+                    setW(0)
+                }
+            
+            }, time);
         setHealth(() => (vit * 1.3 ** 1.7) + 10)
         setWeaponPM(((weapon1 * 5) + (weapon2 * 5) + (weapon3 * 5) + (weapon4 * 5)) * weaponPM2)
         setPower(() => (dex ** 0.70) + (int ** 0.70) + (str ** 0.70) + 1 + (weaponPM ** 1.1))
@@ -262,7 +272,7 @@ export const GameProvider = ({children}) => {
         setIntSoulsMulti(() => intUp1 ? int ** (intSoulsCo + 1) : 1)
         setPowerSoulsMulti(() => power * 0.4)
         setSoulsMulti2(() => boss >= 1 ? boss + 1 ** 1.1 : boss)
-        setSoulsGain(() => ((soulsMulti2 + strSoulsMulti + dexSoulsMulti + intSoulsMulti + powerSoulsMulti) * soulsMulti) ** 1.1 + 1)
+        setSoulsGain(() => (((soulsMulti2 + strSoulsMulti + dexSoulsMulti + intSoulsMulti + powerSoulsMulti) * soulsMulti) * ((prestigeTotal ** 0.96) + 1)) ** 1.1 + 1)
         if (str >= 25 && dex == 25 || str == 25 && dex >= 25){
             setStr((prev) => prev + 2)
             setDex((prev) => prev + 2)
@@ -282,7 +292,7 @@ export const GameProvider = ({children}) => {
             setBuildFlag(true)
         }
         
-        return () => clearTimeout(timer)
+        return () => clearTimeout(interval)
        })
 
     return (
