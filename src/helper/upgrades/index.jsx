@@ -3,16 +3,10 @@ import { GameContext } from "../../context/GameContext"
 
 
 
-export function soulsMultiFunc (i, setSoulsMulti, nvl, flag, setFlag) {
-
-    if (nvl >= 10 && !flag && i == 0) {
+export function soulsMultiFunc (i, setSoulsMulti, nvl, flag, setFlag, price) {
+    if (nvl >= price && i == 0) {
         setSoulsMulti((prev) => prev * 2)
-        setFlag(true) 
-        return
-    }
-    if (nvl >= 100 && !flag && i == 1) {
-        setSoulsMulti((prev) => prev * 2)
-        setFlag(true)
+        setFlag((prev) => prev + 1)
         return
     }
 }
@@ -49,8 +43,7 @@ export function intSoulsFunc (i, int, flag, setFlag, setCo) {
         setFlag(true) 
         return
     }
-    if (int >= 40 && !flag && i==1) {
-        setCo((prev) => prev * 2)
+    if (int >= 150 && !flag && i==1) {
         setFlag(true)
         return
     }

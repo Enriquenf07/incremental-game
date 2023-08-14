@@ -5,22 +5,29 @@ import { formatNumber } from "../../../helper/formatNumber"
 
 
 const Boss = () => {
-    const {power, health, setBoss, boss, setSouls} = useContext(GameContext)
+    const {power, health, setBoss, boss, setSouls, setPrestigeGain} = useContext(GameContext)
     const [bg, setBg] = useState("bg-red-200")
     const [bossName, setBossName] = useState('Tutorial Boss')
     const [bossHealth, setBossHealth] = useState(0)
     const [bossPower, setBossPower] = useState(0)
+    const [floor, setFloor] = useState(1)
 
     useEffect(() => {
-        setBossHealth(() => boss * 10 ** 1.1)
-        setBossPower(() => boss * 10 ** 1.1)
+        setBossHealth(() => ((boss * 10) ** 1.1) * 1.2)
+        setBossPower(() => (boss * 10) ** 1.1)
+        setFloor(Math.ceil(boss / 100))
+        boss > 20 ? setBossName('The Running Tree') : null
     }, [boss])
 
     function fight(){
         if (health / bossPower > bossHealth / power){
-            setSouls((prev) => prev + (1000 * boss ** 1.01))
+            setSouls((prev) => prev + (10000 * boss ** 1.05))
             setBoss((prev) => prev + 1)
+            if (boss % 10 == 0 && boss > 1) {
+                setPrestigeGain((prev) => prev + 1)
+            }
         }
+        
     }
 
     return (
@@ -28,6 +35,7 @@ const Boss = () => {
                 <div className={`min-h-[25rem] lg:h-[30rem] w-[80%] pt-2 pb-4 lg:pb-0 px-0 lg:px-2 lg:min-w-0 lg:w-[55rem] lg:items-start items-center flex flex-col rounded-3xl lg:rounded-xl flex-wrap gap-8 ${bg}`}>
                     <div className="flex flex-col items-center justify-center h-full w-full text-zinc-700 gap-4 overflow-hidden pt-4">
                         <div className="flex flex-col items-center">
+                            <p className="">{floor}° Floor</p>
                             <p className="text-xl font-medium pb-2">{boss} - {bossName}</p>  
                             <p>Health: {formatNumber(bossHealth)}</p>
                             <p>Power: {formatNumber(bossPower)}</p>
