@@ -1,6 +1,9 @@
 export function formatNumber(n, i=0) {
-    if (n >= 1000000000){
+    if (n >= 1000000000000){
         return `${(n / 1000000000).toFixed(2)}T`
+    } 
+    if (n >= 1000000000){
+        return `${(n / 1000000000).toFixed(2)}B`
     }  
     if (n >= 1000000){
         return `${(n / 1000000).toFixed(2)}M`

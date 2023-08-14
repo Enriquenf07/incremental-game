@@ -15,10 +15,10 @@ const Weapons = () => {
     const [bg1, setBg1] = useState('')
 
     useEffect(() => {
-        weaponM1 ? setWeapon1Price((weapon1 * 5 + 20) / 2, (((weapon1 * 0.20) + 1) * 1000) / 2) : setWeapon1Price(2 * (weapon1 ** 1.07) + 20)
-        build == 2 ? setWeapon2Price(((weapon2 ** 1.07) * 20 + 20) * 0.65) :setWeapon2Price((weapon2 ** 1.07) * 20 + 20)
-        setWeapon3Price(weapon3 * 2 + 10)
-        setWeapon4Price(weapon4 * 5 + 20)
+        weaponM1 ? setWeapon1Price(5 * (1.07 ** weapon1) + 20) : setWeapon1Price(5 * (1.07 ** weapon1) + 20)
+        build == 2 ? setWeapon2Price(((1.07 ** weapon2) * 5 + 20) * 0.75) : setWeapon2Price((1.07 ** weapon2) * 5 + 20)
+        build == 2 ? setWeapon3Price((((1.07 ** weapon3 ) * 5 + 20) * 0.75) / 2) : setWeapon3Price(((1.07 ** weapon3 ) * 5 + 20) / 2)
+        setWeapon4Price((1.07 ** weapon4 ) * 5 + 20)
     }, [weapon1, weapon2, weapon3, weapon4])
 
     if (weapon1 >= 1) {
@@ -28,7 +28,7 @@ const Weapons = () => {
                 <p className="text-lg font-medium">Hammer</p>
                 <p>Increase power</p>
                 <p>lvl {weapon1}</p>
-                <p>Unlock: str {formatNumber(weapon1Price)}</p>
+                <p>Unlock: str {formatNumber(weapon1Price, 1)}</p>
             </button>
         </div>
         )
@@ -41,8 +41,7 @@ const Weapons = () => {
                     <p className="text-lg font-medium">Small Sword</p>
                     <p>Increase power</p>
                     <p>lvl {weapon2}</p>
-                    <p>Unlock: dex {formatNumber(weapon2Price)}</p>
-                    <p>Costs: {formatNumber(weapon2Price)}</p>
+                    <p>Unlock: dex {formatNumber(weapon2Price, 1)}</p>
                 </button>
             </div>
         )
@@ -55,8 +54,7 @@ const Weapons = () => {
                     <p className="text-lg font-medium">Straight Sword</p>
                     <p>Increase power</p>
                     <p>lvl {weapon3}</p>
-                    <p>Unlock: str {formatNumber(weapon3Price)} / dex {formatNumber(weapon3Price)}</p>
-                    <p>Costs: {formatNumber(weapon3Price)}</p>
+                    <p>Unlock: str {formatNumber(weapon3Price, 1)} / dex {formatNumber(weapon3Price, 1)}</p>
                 </button>
             </div>
         )
@@ -69,8 +67,7 @@ const Weapons = () => {
                     <p className="text-lg font-medium">Sorcerer Staff</p>
                     <p>Increase power</p>
                     <p>lvl {weapon4}</p>
-                    <p>Unlock: str {formatNumber(weapon4Price)}</p>
-                    <p>Costs: {formatNumber(weapon4Price)}</p>
+                    <p>Unlock: int {formatNumber(weapon4Price, 1)}</p>
                 </button>
             </div>
         )
@@ -81,22 +78,22 @@ const Weapons = () => {
             <button className={`flex flex-col  text-xs w-[10rem] h-[8rem] justify-center items-center rounded-xl border ${bg1} border-black`} onClick={() => buyWeaponFunc(0, [str], souls, setSouls, setWeapon1, weapon1Price)}>
                 <p className="text-lg font-medium">Hammer</p>
                 <p>Increase power</p>
-                <p>Unlock: str {formatNumber(weapon1Price)}</p>
+                <p>Unlock: str {formatNumber(weapon1Price, 1)}</p>
             </button>
             <button className={`flex flex-col text-xs w-[10rem] h-[8rem] justify-center items-center rounded-xl border ${bg1} border-black`} onClick={() => buyWeaponFunc(0, [dex], souls, setSouls, setWeapon2, weapon2Price)}>
                 <p className="text-lg font-medium">Small Sword</p>
                 <p>Increase power</p>
-                <p>Unlock: dex {formatNumber(weapon2Price)}</p>
+                <p>Unlock: dex {formatNumber(weapon2Price, 1)}</p>
             </button>
             <button className={`flex flex-col text-xs w-[10rem] h-[8rem] justify-center items-center rounded-xl border ${bg1} border-black`} onClick={() => buyWeaponFunc(1, [str, dex], souls, setSouls, setWeapon3, weapon3Price)}>
                 <p className="text-lg font-medium">Straight Sword</p>
                 <p>Increase power</p>
-                <p>Unlock: str {formatNumber(weapon3Price)} / dex {formatNumber(weapon3Price)}</p>
+                <p>Unlock: str {formatNumber(weapon3Price, 1)} / dex {formatNumber(weapon3Price, 1)}</p>
             </button>
             <button className={`flex flex-col text-xs w-[10rem] h-[8rem] justify-center items-center rounded-xl border ${bg1} border-black`} onClick={() => buyWeaponFunc(0, [int], souls, setSouls, setWeapon4, weapon4Price)}>
                 <p className="text-lg font-medium">Sorcerer Staff</p>
                 <p>Increase power</p>
-                <p>Unlock: int {formatNumber(weapon4Price)}</p>
+                <p>Unlock: int {formatNumber(weapon4Price, 1)}</p>
             </button>
         </div>
     )

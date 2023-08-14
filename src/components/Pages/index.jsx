@@ -5,12 +5,15 @@ import Upgrades from "./Upgrades"
 import Shop from "./Shop"
 import Boss from "./Boss"
 import Achievements from "./Achievements"
+import Info from "./Info"
+
 import { formatNumber } from "../../helper/formatNumber"
+
 
 const View = () => {
     const {name, build, bgModal, str, dex, int, souls, soulsGain, vit, nvl, health, power, view, prestige} = useContext(GameContext)
     const [currentView, setCurrentView] = useState(<Main />)
-    const [buildName, setBuildName] = useState('None')
+    const [buildName, setBuildName] = useState('Beginner')
 
     useEffect(() => {
         if (build == 1) {
@@ -42,6 +45,10 @@ const View = () => {
             setCurrentView(<Achievements />)
             return
         }
+        if (view == 5) {
+            setCurrentView(<Info />)
+            return
+        }
 
         
     }, [view])
@@ -65,8 +72,8 @@ const View = () => {
                     </div>
                     <div className={`min-h-fit py-8  w-[80%] lg:w-[18rem] text-lg font-medium flex flex-col gap-1 justify-center items-center rounded-3xl lg:rounded-xl ${bgModal}`}>
                         <p>Name: {name}</p>
-                        <p>Build: {buildName} </p>
-                        <p>Prestige: {prestige}</p>
+                        <p>Build: {buildName}</p>
+                        <p>Prestige: {formatNumber(prestige, 1)}</p>
                     </div>
                 </div>
                 {currentView}

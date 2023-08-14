@@ -32,11 +32,12 @@ export const GameProvider = ({children}) => {
     const [powerSoulsMulti ,setPowerSoulsMulti] = useLocalStorage('powerSoulsMulti', 1)
     const [soulsGain, setSoulsGain] = useState((soulsMulti * soulsMulti2 * strSoulsMulti * dexSoulsMulti * intSoulsMulti * powerSoulsMulti) ** 1.04 + 1)
 
-    const [up1Flag, setUp1Flag] = useLocalStorage('up1Flag', false)
-    const [up2Flag, setUp2Flag] = useLocalStorage('up2Flag', false)
+    const [up1Flag, setUp1Flag] = useLocalStorage('up1Flag', 0)
+    const [up2Flag, setUp2Flag] = useLocalStorage('up2Flag', 0)
     const [strUp1, setStrUp1] = useLocalStorage('strUp1', false)
     const [dexUp1, setDexUp1] = useLocalStorage('dexUp1', false)
     const [intUp1, setIntUp1] = useLocalStorage('intUp1', false)
+    const [intUp2, setIntUp2] = useLocalStorage('intUp2', false)
 
 
     const [weapon1, setWeapon1] = useLocalStorage('weapon1', 0)
@@ -51,12 +52,13 @@ export const GameProvider = ({children}) => {
     const [prestige, setPrestige] = useLocalStorage('prestige', 0)
     const [prestigeGain, setPrestigeGain] = useLocalStorage('prestigeGain', 0)
     const [name, setName] = useLocalStorage('name', '');
-    const [build, setBuild] = useLocalStorage('build', 0);
+    const [build, setBuild] = useLocalStorage('build', -1);
     const [time, setTime] = useLocalStorage('time', 10)
     const [buildFlag, setBuildFlag] = useLocalStorage('buildFlag', false)
     const [weaponPM2, setWeaponPM2] = useLocalStorage('weaponPM2', 1)
     const [prestigeTotal, setPrestigeTotal] = useLocalStorage('totalPrestige', 0)
 
+    const [necromancerFlag, setNecromancerFlag] = useLocalStorage('necromancerFlag', false)
 
 
     const toggleTheme = () => {
@@ -89,12 +91,13 @@ export const GameProvider = ({children}) => {
         setSoulsMulti(1)
         setNvlPrice(10)
 
-        setUp1Flag(false)
-        setUp2Flag(false)
+        setUp1Flag(0)
+        setUp2Flag(0)
         setStrUp1(false)
         setDexUp1(false)
         setIntUp1(false)
         setSoulsFlag(false)
+        setIntUp2(false)
 
         setWeapon1(0)
         setWeapon2(0)
@@ -114,8 +117,13 @@ export const GameProvider = ({children}) => {
         setWeaponM(0)
         setPrestige(0)
         setPrestigeGain(0)
-        setBuild(999)
+        setBuild(-1)
+        setBuildFlag(false)
         setName('')
+        setPrestigeTotal(0)
+        setTime(10)
+        setNecromancerFlag(false)
+
     }
 
     const prestigeGame = () => {
@@ -132,10 +140,10 @@ export const GameProvider = ({children}) => {
 
         setBuild(0)
         setPrestige(prev => prev + prestigeGain)
-        setPrestigeTotal(prev => prev + 1)
+        setPrestigeTotal(prev => prev + prestigeGain)
     
-        setUp1Flag(false)
-        setUp2Flag(false)
+        setUp1Flag(0)
+        setUp2Flag(0)
         setStrUp1(false)
         setDexUp1(false)
         setIntUp1(false)
@@ -158,6 +166,8 @@ export const GameProvider = ({children}) => {
         setBoss(1)
         setWeaponM(0)
         setName('')
+        setTime(10)
+        setIntUp2(false)
     }
 
     const activeSouls = () => {
@@ -165,9 +175,9 @@ export const GameProvider = ({children}) => {
     }
 
     const buyVit = () => {
-        if (souls >= (10 * 1.09 ** nvl) ** 0.98) {
-            if (str == 25 || dex == 25 || int == 25) {
-                setPower((prev) => prev + 10)
+        if (souls >= nvlPrice) {
+            if (str >= 25 && dex >= 25 && int >= 25) {
+                setPower((prev) => prev + 5)
             }
             if(nvl % 10 == 0){
                 setVit((prev) => prev + 1)
@@ -177,7 +187,7 @@ export const GameProvider = ({children}) => {
                 setSoulsMulti((prev) => prev * 1.05)
             }
             setSouls((prev) => prev - nvlPrice)
-            setNvlPrice((prev) => (10 * 1.09 ** nvl) ** 0.98)
+            setNvlPrice(10 * 1.09 ** nvl)
             setVit((prev) => prev + 1)
             setNvl((prev) => prev + 1)
             return
@@ -198,7 +208,7 @@ export const GameProvider = ({children}) => {
                 setSoulsMulti((prev) => prev * 1.05)
             }
             setSouls((prev) => prev - nvlPrice)
-            setNvlPrice((prev) => 10 * 1.09 ** nvl)
+            setNvlPrice(10 * 1.09 ** nvl)
             setStr((prev) => prev + 1)
             setNvl((prev) => prev + 1)
             return
@@ -219,7 +229,7 @@ export const GameProvider = ({children}) => {
                 setSoulsMulti((prev) => prev * 1.05)
             }
             setSouls((prev) => prev - nvlPrice)
-            setNvlPrice((prev) => 10 * 1.09 ** nvl)
+            setNvlPrice(10 * 1.09 ** nvl)
             setDex((prev) => prev + 1)
             setNvl((prev) => prev + 1)
             return
@@ -240,7 +250,7 @@ export const GameProvider = ({children}) => {
                 setSoulsMulti((prev) => prev * 1.05)
             }
             setSouls((prev) => prev - nvlPrice)
-            setNvlPrice((prev) => 10 * 1.09 ** nvl)
+            setNvlPrice(10 * 1.09 ** nvl)
             setInt((prev) => prev + 1)
             setNvl((prev) => prev + 1)
             return
@@ -264,7 +274,7 @@ export const GameProvider = ({children}) => {
                 }
             
             }, time);
-        setHealth(() => (vit * 1.3 ** 1.7) + 10)
+        intUp2 ? setHealth(() => power) : setHealth(((vit) * (1.04 ** vit) + 10))
         setWeaponPM(((weapon1 * 5) + (weapon2 * 5) + (weapon3 * 5) + (weapon4 * 5)) * weaponPM2)
         setPower(() => (dex ** 0.70) + (int ** 0.70) + (str ** 0.70) + 1 + (weaponPM ** 1.1))
         setStrSoulsMulti(() => strUp1 ? str ** (strSoulsCo + 1) : 1)
@@ -272,7 +282,7 @@ export const GameProvider = ({children}) => {
         setIntSoulsMulti(() => intUp1 ? int ** (intSoulsCo + 1) : 1)
         setPowerSoulsMulti(() => power * 0.4)
         setSoulsMulti2(() => boss >= 1 ? boss + 1 ** 1.1 : boss)
-        setSoulsGain(() => (((soulsMulti2 + strSoulsMulti + dexSoulsMulti + intSoulsMulti + powerSoulsMulti) * soulsMulti) * ((prestigeTotal ** 0.96) + 1)) ** 1.1 + 1)
+        setSoulsGain(() => (((soulsMulti2 + strSoulsMulti + dexSoulsMulti + intSoulsMulti + powerSoulsMulti) * soulsMulti) * ((prestigeTotal ** 0.50) + 1)) ** 1.1 + 1)
         if (str >= 25 && dex == 25 || str == 25 && dex >= 25){
             setStr((prev) => prev + 2)
             setDex((prev) => prev + 2)
@@ -292,7 +302,7 @@ export const GameProvider = ({children}) => {
        })
 
     return (
-    <GameContext.Provider value={{setWeaponPM2, prestigeGame, name, build, setBuildFlag, setName, setBuild, prestige, setPrestige, prestigeGain, setPrestigeGain, soulsGain, setBoss, boss, weaponM, weapon1, weapon2, weapon3, weapon4, setWeapon1, setWeapon2, setWeapon3, setWeapon4, strUp1, dexUp1, intUp1, setStrSoulsCo, setSoulsMulti2, setStrSoulsMulti, setStrUp1, setDexUp1, setIntUp1, up1Flag, setUp1Flag, up2Flag, setUp2Flag, view, setView, setSoulsMulti, nvlPrice, buyVit, buyDex, buyStr, buyInt, theme, toggleTheme, settings, openSettings, bgColor, bgModal, textColor, str, dex, int, souls, vit, nvl, health, power, soulsFlag, resetGame, activeSouls, setSouls}}>
+    <GameContext.Provider value={{necromancerFlag, setNecromancerFlag, setWeaponPM2, prestigeTotal, prestigeGame, name, build, setBuildFlag, setName, setBuild, prestige, setPrestige, prestigeGain, setPrestigeGain, soulsGain, setBoss, boss, weaponM, weapon1, weapon2, weapon3, weapon4, setWeapon1, setWeapon2, setWeapon3, setWeapon4, strUp1, dexUp1, intUp1, intUp2, setStrSoulsCo, setSoulsMulti2, setStrSoulsMulti, setStrUp1, setDexUp1, setIntUp1, setIntUp2, up1Flag, setUp1Flag, up2Flag, setUp2Flag, view, setView, setSoulsMulti, nvlPrice, buyVit, buyDex, buyStr, buyInt, theme, toggleTheme, settings, openSettings, bgColor, bgModal, textColor, str, dex, int, souls, vit, nvl, health, power, soulsFlag, resetGame, activeSouls, setSouls}}>
         {children}
     </GameContext.Provider>
     )

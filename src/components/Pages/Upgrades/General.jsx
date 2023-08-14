@@ -6,26 +6,24 @@ import { soulsMultiFunc } from "../../../helper/upgrades"
 
 const General = () => {
     const {theme, textColor, setSoulsMulti, nvl, up1Flag, setUp1Flag, up2Flag, setUp2Flag} = useContext(GameContext)
-    
-    const [bg1, setBg1] = useState('')
-    const [bg2, setBg2] = useState('')
-    const [bg3, setBg3] = useState('')
+    const [price, setPrice] = useState(up1Flag * 50 + 50)
 
+    const [bg1, setBg1] = useState('bg-[#ffd700] text-zinc-700')
+    
     useEffect(() => {
-        up1Flag ? setBg1('bg-[#d4af37] text-zinc-700') : null
-        up2Flag ? setBg2('bg-[#d4af37] text-zinc-700') : null
-    }, [up1Flag, up2Flag])
+        setPrice((2**up1Flag) * 50)
+    }, [up1Flag])
+    
+
 
     return (
         <div className={`flex justify-start items-start w-full pl-4 lg:px-0 gap-5 flex-wrap ${textColor}`}>
-            <button className={`flex flex-col text-xs w-[7rem] h-[5rem] justify-center items-center rounded-xl border ${bg1} ${theme == 'dark' ? 'border-zinc-100' : 'border-zinc-700'}`} onClick={() => soulsMultiFunc(0, setSoulsMulti, nvl, up1Flag, setUp1Flag)}>
+            <button className={`flex flex-col text-xs w-[7rem] h-[5rem] justify-center items-center rounded-xl border ${bg1} ${theme == 'dark' ? 'border-zinc-100' : 'border-zinc-700'}`} onClick={() => soulsMultiFunc(0, setSoulsMulti, nvl, up1Flag, setUp1Flag, price)}>
                 <p>You become stronger. Kill faster!</p>
-                <p>unlocks: lvl 50</p>
+                <p>Lvl {up1Flag}</p>
+                <p>unlocks: lvl {price}</p>
             </button>
-            {up1Flag ? <button className={`flex flex-col text-xs w-[7rem] h-[5rem] justify-center items-center rounded-xl border ${bg2} ${theme == 'dark' ? 'border-zinc-100' : 'border-zinc-700'} border-black`} onClick={() => soulsMultiFunc(1, setSoulsMulti, nvl, up2Flag, setUp2Flag)}>
-                <p>You become stronger. Kill faster!</p>
-                <p>Unlocks: lvl 100</p>
-            </button> : null}
+            
         </div>
     )
 }
