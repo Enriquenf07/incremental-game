@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+### Changed
+- Split the gameContext in two files, game context for the logical context and data context to data.
+- Changed the data
+- Changed the time function
+
+
 ## [1.0.0] - 2023-08-14
 - First stable version
 
