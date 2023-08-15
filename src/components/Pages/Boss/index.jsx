@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react"
 import { GameContext } from "../../../context/GameContext"
 import { formatNumber } from "../../../helper/formatNumber"
+import { DataContext } from "../../../context/DataContext"
 
 
 
 const Boss = () => {
-    const {power, health, setBoss, boss, setSouls, setPrestigeGain} = useContext(GameContext)
+    const {power, health, setBoss, boss, setSouls, setPrestigeGain} = useContext(DataContext)
     const [bg, setBg] = useState("bg-red-200")
     const [bossName, setBossName] = useState('Tutorial Boss')
     const [bossHealth, setBossHealth] = useState(0)

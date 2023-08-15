@@ -2,10 +2,12 @@ import { useContext, useEffect, useState } from "react"
 import { GameContext } from "../../../context/GameContext"
 import { formatNumber } from "../../../helper/formatNumber"
 import { unlockBuild } from "../../../helper/Prestige"
+import { DataContext } from "../../../context/DataContext"
 
 
 const Prestige = () => {
-    const {setSoulsMulti, nvl, up1Flag, setUp1Flag, prestige, prestigeGame, boss, setPrestige, setBuild, setPrestigeGain, prestigeGain, prestigeTotal, necromancerFlag, setNecromancerFlag, setSouls} = useContext(GameContext)
+    const {setSoulsMulti, nvl, up1Flag, setUp1Flag, prestige, boss, setPrestige, setBuild, setPrestigeGain, prestigeGain, prestigeTotal, necromancerFlag, setNecromancerFlag, setSouls} = useContext(DataContext)
+    const {prestigeGame} = useContext(GameContext)
     const [bg1, setBg1] = useState('')
     const [bg2, setBg2] = useState('')
     const [bg3, setBg3] = useState('')

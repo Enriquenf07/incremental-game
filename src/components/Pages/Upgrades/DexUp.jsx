@@ -2,10 +2,11 @@ import { useContext, useEffect, useState } from "react"
 import { GameContext } from "../../../context/GameContext"
 
 import { dexSoulsFunc } from "../../../helper/upgrades"
+import { DataContext } from "../../../context/DataContext"
 
 
 const DexUp = () => {
-    const {dex, setDexUp1, dexUp1} = useContext(GameContext)
+    const {dex, setDexUp1, dexUp1} = useContext(DataContext)
     
     const [bg1, setBg1] = useState('')
 

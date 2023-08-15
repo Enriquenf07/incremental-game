@@ -3,11 +3,12 @@ import { GameContext } from "../../../context/GameContext"
 import { formatNumber } from "../../../helper/formatNumber"
 
 import { buyWeaponFunc } from "../../../helper/buyWeapons"
+import { DataContext } from "../../../context/DataContext"
 
 
 
 const Weapons = () => {
-    const {str, dex, int, weapon1, souls, setSouls, setWeapon1, weapon2, setWeapon2, weapon3, setWeapon3, weapon4, setWeapon4, weaponM1, build} = useContext(GameContext)
+    const {str, dex, int, weapon1, souls, setSouls, setWeapon1, weapon2, setWeapon2, weapon3, setWeapon3, weapon4, setWeapon4, weaponM1, build} = useContext(DataContext)
     const [weapon1Price, setWeapon1Price] = useState(20)
     const [weapon2Price, setWeapon2Price] = useState(20)
     const [weapon3Price, setWeapon3Price] = useState(20)

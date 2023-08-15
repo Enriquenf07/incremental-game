@@ -3,9 +3,10 @@ import { GameContext } from "../../../context/GameContext"
 import {GiBlackKnightHelm, GiCurvyKnife, GiHalfDead} from 'react-icons/gi';
 import {FaHatWizard} from 'react-icons/fa';
 import {BiBody} from 'react-icons/bi'
+import { DataContext } from "../../../context/DataContext";
 
 function ChangeBuild(){
-    const {bgModal, textColor, setBuild, setBuildFlag, necromancerFlag} = useContext(GameContext)
+    const {bgModal, textColor, setBuild, setBuildFlag, necromancerFlag} = useContext(DataContext)
 
     const handleChange = (i) => {
         setBuild(i);

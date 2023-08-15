@@ -2,10 +2,11 @@ import { useContext, useEffect, useState } from "react"
 import { GameContext } from "../../../context/GameContext"
 
 import Weapons from "./Weapons"
+import { DataContext } from "../../../context/DataContext"
 
 
 const Shop = () => {
-    const {bgModal} = useContext(GameContext)
+    const {bgModal} = useContext(DataContext)
     const [bg, setBg] = useState("bg-red-200")
     const [shopView, setShopView] = useState(0)
     const [actualView, setActualView] = useState(<></>)

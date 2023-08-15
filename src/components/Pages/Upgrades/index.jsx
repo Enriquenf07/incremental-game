@@ -5,9 +5,10 @@ import StrUp from "./StrUp"
 import DexUp from "./DexUp"
 import IntUp from "./IntUp"
 import Prestige from "./Prestige"
+import { DataContext } from "../../../context/DataContext"
 
 const Upgrades = () => {
-    const {bgModal, theme, textColor} = useContext(GameContext)
+    const {bgModal, theme, textColor} = useContext(DataContext)
     const [bg, setBg] = useState("bg-gray-200")
     const [upView, setUpView] = useState(0)
     const [actualView, setActualView] = useState(<General />)

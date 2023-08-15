@@ -2,10 +2,11 @@ import { useContext, useEffect, useState } from "react"
 import { GameContext } from "../../../context/GameContext"
 
 import { intSoulsFunc } from "../../../helper/upgrades"
+import { DataContext } from "../../../context/DataContext"
 
 
 const IntUp = () => {
-    const {int, intUp1, setIntUp1, intUp2, setIntUp2} = useContext(GameContext)
+    const {int, intUp1, setIntUp1, intUp2, setIntUp2} = useContext(DataContext)
     
     const [bg1, setBg1] = useState('')
     const [bg2, setBg2] = useState('')
