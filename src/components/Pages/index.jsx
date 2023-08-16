@@ -8,10 +8,11 @@ import Achievements from "./Achievements"
 import Info from "./Info"
 
 import { formatNumber } from "../../helper/formatNumber"
+import { DataContext } from "../../context/DataContext"
 
 
 const View = () => {
-    const {name, build, bgModal, str, dex, int, souls, soulsGain, vit, nvl, health, power, view, prestige} = useContext(GameContext)
+    const {name, build, bgModal, str, dex, int, souls, soulsGain, vit, nvl, health, power, view, prestige} = useContext(DataContext)
     const [currentView, setCurrentView] = useState(<Main />)
     const [buildName, setBuildName] = useState('Beginner')
 
@@ -24,6 +25,9 @@ const View = () => {
         }
         if (build == 3) {
             setBuildName('Sorcerer')
+        }
+        if (build == 4) {
+            setBuildName('Necromancer')
         }
         if (view == 0) {
             setCurrentView(<Main />)

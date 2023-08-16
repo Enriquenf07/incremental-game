@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react"
 import { GameContext } from "../../../context/GameContext"
 import { soulsMultiFunc } from "../../../helper/upgrades"
+import { DataContext } from "../../../context/DataContext"
 
 
 
 const General = () => {
-    const {theme, textColor, setSoulsMulti, nvl, up1Flag, setUp1Flag, up2Flag, setUp2Flag} = useContext(GameContext)
+    const {theme, textColor, setSoulsMulti, nvl, up1Flag, setUp1Flag, up2Flag, setUp2Flag} = useContext(DataContext)
     const [price, setPrice] = useState(up1Flag * 50 + 50)
 
     const [bg1, setBg1] = useState('bg-[#ffd700] text-zinc-700')

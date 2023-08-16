@@ -5,16 +5,16 @@ import {BiSolidSun} from 'react-icons/bi'
 import {IoMdSettings} from 'react-icons/io'
 import SettingsModal from "./SettingsModal"
 import {BiSolidHelpCircle} from 'react-icons/bi'
+import { DataContext } from "../../context/DataContext"
 
 const NavBar = () => {
-    const {toggleTheme, theme, bgModal, openSettings, settings, bgColor, setView} = useContext(GameContext)
+    const {theme, bgModal, settings, bgColor, setView} = useContext(DataContext)
+    const {toggleTheme, openSettings} = useContext(GameContext)
     const [icon, setIcon] = useState(<BiSolidSun />)
 
     useEffect(() => {
         setIcon(theme == 'light' ? <BsMoonFill /> : <BiSolidSun />)
     }, [theme] )
-
-
 
     return (
         <div className="flex flex-col gap-4 w-[80%]">

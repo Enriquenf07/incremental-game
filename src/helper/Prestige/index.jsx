@@ -1,7 +1,7 @@
-export function unlockBuild(setFlag, flag, setSouls, price){
+export function unlockBuild(setFlag, flag, setPrestige, prestige, price){
     if (prestige >= price && !flag) {
         setFlag(true)
-        setSouls(prev => prev - price)
+        setPrestige(prev => prev - price)
     } 
 }
 

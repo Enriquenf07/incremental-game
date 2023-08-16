@@ -6,11 +6,12 @@ import NavBar from './components/NavBar'
 import { classes } from './helper/Prestige'
 import ChangeName from './components/Pages/Build/ChangeName'
 import ChangeBuild from './components/Pages/Build/ChangeBuild'
+import { DataContext } from './context/DataContext'
 
 
 
 function App() {
-  const {bgColor, textColor, name, build} = useContext(GameContext)
+  const {bgColor, textColor, name, build} = useContext(DataContext)
 
   if (name == '') {
     return (

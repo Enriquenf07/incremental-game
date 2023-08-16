@@ -2,10 +2,11 @@ import { useContext, useEffect, useState } from "react"
 import { GameContext } from "../../../context/GameContext"
 
 import { intSoulsFunc } from "../../../helper/upgrades"
+import { DataContext } from "../../../context/DataContext"
 
 
 const IntUp = () => {
-    const {int, intUp1, setIntUp1, intUp2, setIntUp2} = useContext(GameContext)
+    const {int, intUp1, setIntUp1, intUp2, setIntUp2} = useContext(DataContext)
     
     const [bg1, setBg1] = useState('')
     const [bg2, setBg2] = useState('')
@@ -22,7 +23,7 @@ const IntUp = () => {
                 <p>Unlocks: int 20</p>
             </button>
             <button className={`flex flex-col text-zinc-700 text-xs w-[7rem] h-[5rem] justify-center items-center rounded-xl border ${bg2} border-black`} onClick={() => intSoulsFunc(1, int, intUp2, setIntUp2)}>
-                <p>You become a glass cannon. Let health equal to power</p>
+                <p>You become a glass cannon. Let health equal to power + vitality</p>
                 <p>Unlocks: int 150</p>
             </button>
         </div>

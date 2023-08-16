@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from "react"
 import { GameContext } from "../../../context/GameContext"
+import { DataContext } from "../../../context/DataContext"
 
 function ChangeName(){
-    const {setName, bgModal, textColor} = useContext(GameContext)
+    const {setName, bgModal, textColor} = useContext(DataContext)
     const [target, setTarget] = useState('')
     return(
         <div className="flex-col h-full w-full flex items-center pt-10 gap-4">

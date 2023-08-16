@@ -2,10 +2,11 @@ import { useContext, useEffect, useState } from "react"
 import { GameContext } from "../../../context/GameContext"
 
 import { formatNumber } from "../../../helper/formatNumber"
+import { DataContext } from "../../../context/DataContext"
 
 const Main = () => {
-    const {bgModal, str, dex, int, activeSouls, soulsFlag, theme, build, souls, vit, nvl, health, power, nvlPrice, buyVit, buyInt, buyStr, buyDex, setSouls, soulsGain, time, w} = useContext(GameContext)
-    
+    const {bgModal, str, dex, int, soulsFlag, theme, build, souls, vit, nvl, health, power, nvlPrice, setSouls, soulsGain, time} = useContext(DataContext)
+    const {activeSouls, buyVit, buyInt, buyStr, buyDex} = useContext(GameContext)
     
 
     return (
