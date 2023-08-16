@@ -53,6 +53,7 @@ export const DataProvider = ({children}) => {
     const [prestigeTotal, setPrestigeTotal] = useLocalStorage('totalPrestige', 0)
     const [necromancerFlag, setNecromancerFlag] = useLocalStorage('necromancerFlag', false)
 
+    const [achievements, setAchievements] = useLocalStorage('achievements', {'0': 0, '1': 0, '2': 0, '3': 0, '4': 0})
 
 
     return (
@@ -62,7 +63,7 @@ export const DataProvider = ({children}) => {
         prestigeGain, setPrestigeGain, soulsGain, setBoss, boss, weaponM, weapon1, weapon2, weapon3, weapon4, setWeapon1, setWeapon2, setWeapon3, setWeapon4, strUp1, dexUp1,
         intUp1, intUp2, setStrSoulsCo, setSoulsMulti2, setStrSoulsMulti, setStrUp1, setDexUp1, setIntUp1, setIntUp2, up1Flag, setUp1Flag, up2Flag, setUp2Flag, view, setView,
         setSoulsMulti, nvlPrice, theme, settings, bgColor, bgModal, textColor, str, dex, int, souls, vit, nvl, health,
-        power, soulsFlag, setSouls, setBgColor, strSoulsCo, setSoulsGain}}>
+        power, soulsFlag, setSouls, setBgColor, strSoulsCo, setSoulsGain, achievements, setAchievements}}>
         {children}
     </DataContext.Provider>
     )
