@@ -13,7 +13,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Knight build 
 - Vitality formula changed
 
-
 ## [1.0.1] - 2023-08-16
 
 ### Changed
@@ -23,6 +22,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### fixed
 - Necromancer bug
 
+
+### Changed
+- Split the gameContext in two files, game context for the logical context and data context to data.
+- Changed the time function
+
 ## [1.0.0] - 2023-08-14
 - First stable version
+
+
+
+
 
