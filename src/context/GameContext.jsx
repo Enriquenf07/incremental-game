@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState, useContext } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { DataContext } from "./DataContext";
+import Achievements from "../components/Pages/Achievements";
 
 export const GameContext = createContext();
 
@@ -11,7 +12,7 @@ export const GameProvider = ({children}) => {
         prestigeGain, setPrestigeGain, soulsGain, setBoss, boss, weaponM, weapon1, weapon2, weapon3, weapon4, setWeapon1, setWeapon2, setWeapon3, setWeapon4, strUp1, dexUp1,
         intUp1, intUp2, setStrSoulsCo, setSoulsMulti2, setStrSoulsMulti, setStrUp1, setDexUp1, setIntUp1, setIntUp2, up1Flag, setUp1Flag, up2Flag, setUp2Flag, view, setView,
         setSoulsMulti, nvlPrice, theme, settings, bgColor, bgModal, textColor, str, dex, int, souls, vit, nvl, health,
-        power, soulsFlag, setSouls, setBgColor, strSoulsCo, setSoulsGain} = useContext(DataContext)
+        power, soulsFlag, setSouls, setBgColor, strSoulsCo, setSoulsGain, achievements, setAchievements} = useContext(DataContext)
 
     const toggleTheme = () => {
         if (theme == 'light') {
@@ -215,7 +216,7 @@ export const GameProvider = ({children}) => {
             if (soulsFlag) {
                 setSouls((prev) => prev + soulsGain )     
             }}, time * 100);
-        intUp2 ? setHealth(() => power + ((vit) * (1.04 ** vit) + 10)) : setHealth(((vit) * (1.04 ** vit) + 10))
+        intUp2 ? setHealth(() => power + ((vit) * (1.02 ** vit) + 10)) : setHealth(((vit) * (1.02 ** vit) + 10))
         setWeaponPM(((weapon1 * 5) + (weapon2 * 5) + (weapon3 * 5) + (weapon4 * 5)) * weaponPM2)
         setPower(() => (dex ** 0.70) + (int ** 0.70) + (str ** 0.70) + 1 + (weaponPM ** 1.1))
         setStrSoulsMulti(() => strUp1 ? str ** (strSoulsCo + 1) : 1)
@@ -230,13 +231,55 @@ export const GameProvider = ({children}) => {
         }
         if (buildFlag) {
             if (build == 1) {
-                setStr(10)
+                setStr(25)
+                setVit(25)
             }
     
             if (build == 3) {
                 setTime(8)
             }
             setBuildFlag(false)
+        }
+        if (prestigeTotal > 1 && achievements['0'] == 0){
+            setAchievements({...achievements, '0': 1})
+        }
+
+        if (prestigeTotal > 10 && achievements['1'] == 0){
+            setAchievements({...achievements, '1': 1})
+        }
+
+        if (soulsGain > 1000000 && achievements['2'] == 0){
+            setAchievements({...achievements, '2': 1})
+        }
+
+        if (souls > 10000000000 && achievements['3'] == 0){
+            setAchievements({...achievements, '3': 1})
+        }
+        if (boss >= 218 && achievements['4'] == 0){
+            setAchievements({...achievements, '4': 1})
+        }
+        if (achievements['0'] == 1){
+            setAchievements({...achievements, '0': 2})
+            setSoulsMulti((prev) => prev * 2)
+        }
+        if (achievements['1'] == 1){
+            setAchievements({...achievements, '1': 2})
+            setSoulsMulti((prev) => prev * 2)
+        }
+
+        if (achievements['2'] == 1){
+            setAchievements({...achievements, '2': 2})
+            setSoulsMulti((prev) => prev * 2)
+        }
+
+        if (achievements['3'] == 1){
+            setAchievements({...achievements, '3': 2})
+            setSoulsMulti((prev) => prev * 2)
+        }
+
+        if (achievements['4'] == 1){
+            setAchievements({...achievements, '4': 2})
+            setSoulsMulti((prev) => prev * 2)
         }
         
         return () => clearTimeout(interval)

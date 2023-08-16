@@ -22,7 +22,7 @@ function ChangeBuild(){
             <button className={textColor + " h-[20rem] w-[15rem] rounded-xl flex-col flex justify-center items-center gap-5 " + bgModal} onClick={() => handleChange(1)}>
                 <p><GiBlackKnightHelm size={'40px'} /></p>
                 <p className="w-full">Knight</p>
-                <p className="w-full">Starts with 10 str</p>
+                <p className="w-full">Starts with 25 str and 25 vit</p>
             </button>
             <button className={textColor + " h-[20rem] w-[15rem] rounded-xl flex-col flex justify-center items-center gap-5 " + bgModal} onClick={() => handleChange(2)}>
                 <p>< GiCurvyKnife size={'40px'} /></p>
