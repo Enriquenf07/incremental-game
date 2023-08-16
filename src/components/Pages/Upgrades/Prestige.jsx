@@ -13,7 +13,7 @@ const Prestige = () => {
     const [bg3, setBg3] = useState('')
 
     useEffect(() => {
-        setPrestigeGain(() => boss >= 10 ? boss ** 0.16 : 0)
+        setPrestigeGain(() => boss >= 10 ? boss ** 0.25 : 0)
     })    
 
     const handlePrestige = () => {

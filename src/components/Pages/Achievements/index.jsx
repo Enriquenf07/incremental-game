@@ -26,17 +26,17 @@ const Achievements = () => {
             setText2('You are doing well. Gain 2x souls') 
             return
         }
-        if (flag1['5']) {
+        if (flag1['4']) {
             setText1('4 - Enzo Ferreira!!') 
             setText2('You finished the *****. Gain 2x souls') 
             return
         }
-        if (flag1['6']) {
+        if (flag1['5']) {
             setText1('5 - João lunardi!!') 
             setText2('You finished the *****. Gain 2x souls') 
             return
         }
-        if (flag1['7']) {
+        if (flag1['6']) {
             setText1('6 - Bia Bettega!!') 
             setText2('You finished the *****. Gain 2x souls') 
             return
@@ -73,15 +73,15 @@ const Achievements = () => {
                             </div> : null}
                             {achievements['2'] >= 1 ? <div className="w-10 h-12 bg-[#d4af37] rounded-xl flex flex-col justify-center items-center"
                             onClick={() => setFlag1({'4': !flag1['4'], '1': false, '2': false, '3': false, '5': false, '6': false})}>
-                                III
+                                IV
                             </div> : null}
                             {achievements['3'] >= 1 ? <div className="w-10 h-12 bg-[#d4af37] rounded-xl flex flex-col justify-center items-center"
                             onClick={() => setFlag1({'5': !flag1['5'], '1': false, '2': false, '3': false, '4': false, '6': false})}>
-                                IV
+                                V
                             </div> : null}
                             {achievements['4'] >= 1 ? <div className="w-10 h-12 bg-[#d4af37] rounded-xl flex flex-col justify-center items-center"
                             onClick={() => setFlag1({'6': !flag1['6'], '1': false, '2': false, '3': false, '4': false, '5': false})}>
-                                V
+                                VI
                             </div> : null}
                         </div>
                     </div>
