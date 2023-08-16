@@ -3,7 +3,7 @@
 
 [Link!](https://enriquenf07.github.io/incremental-game/)
 
-Version: 1.0.0
+Version: 1.0.2
 
 ![game](github-img/game.png)
 
