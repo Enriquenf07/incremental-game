@@ -26,6 +26,9 @@ const View = () => {
         if (build == 3) {
             setBuildName('Sorcerer')
         }
+        if (build == 4) {
+            setBuildName('Necromancer')
+        }
         if (view == 0) {
             setCurrentView(<Main />)
             return

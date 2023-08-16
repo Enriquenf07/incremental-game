@@ -215,7 +215,7 @@ export const GameProvider = ({children}) => {
             if (soulsFlag) {
                 setSouls((prev) => prev + soulsGain )     
             }}, time * 100);
-        intUp2 ? setHealth(() => power) : setHealth(((vit) * (1.04 ** vit) + 10))
+        intUp2 ? setHealth(() => power + ((vit) * (1.04 ** vit) + 10)) : setHealth(((vit) * (1.04 ** vit) + 10))
         setWeaponPM(((weapon1 * 5) + (weapon2 * 5) + (weapon3 * 5) + (weapon4 * 5)) * weaponPM2)
         setPower(() => (dex ** 0.70) + (int ** 0.70) + (str ** 0.70) + 1 + (weaponPM ** 1.1))
         setStrSoulsMulti(() => strUp1 ? str ** (strSoulsCo + 1) : 1)
