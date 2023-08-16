@@ -121,6 +121,25 @@ export const GameProvider = ({children}) => {
         setName('')
         setTime(10)
         setIntUp2(false)
+
+        if (achievements['0'] >= 1){
+            setAchievements({...achievements, '0': 1})
+        }
+        if (achievements['1'] >= 1){
+            setAchievements({...achievements, '1': 1})
+        }
+
+        if (achievements['2'] >= 1){
+            setAchievements({...achievements, '2': 1})
+        }
+
+        if (achievements['3'] >= 1){
+            setAchievements({...achievements, '3': 1})
+        }
+
+        if (achievements['4'] >= 1){
+            setAchievements({...achievements, '4': 1})
+        }
     }
 
     const activeSouls = () => {
@@ -216,7 +235,7 @@ export const GameProvider = ({children}) => {
             if (soulsFlag) {
                 setSouls((prev) => prev + soulsGain )     
             }}, time * 100);
-        intUp2 ? setHealth(() => power + ((vit) * (1.02 ** vit) + 10)) : setHealth(((vit) * (1.02 ** vit) + 10))
+        intUp2 ? setHealth(() => power + ((vit) * (1.04 ** vit) + 10)) : setHealth(((vit) * (1.04 ** vit) + 10))
         setWeaponPM(((weapon1 * 5) + (weapon2 * 5) + (weapon3 * 5) + (weapon4 * 5)) * weaponPM2)
         setPower(() => (dex ** 0.70) + (int ** 0.70) + (str ** 0.70) + 1 + (weaponPM ** 1.1))
         setStrSoulsMulti(() => strUp1 ? str ** (strSoulsCo + 1) : 1)
@@ -248,38 +267,38 @@ export const GameProvider = ({children}) => {
             setAchievements({...achievements, '1': 1})
         }
 
-        if (soulsGain > 1000000 && achievements['2'] == 0){
+        if (soulsGain > 1000000000 && achievements['2'] == 0){
             setAchievements({...achievements, '2': 1})
         }
 
-        if (souls > 10000000000 && achievements['3'] == 0){
+        if (souls > 1000000000000 && achievements['3'] == 0){
             setAchievements({...achievements, '3': 1})
         }
-        if (boss >= 218 && achievements['4'] == 0){
+        if (boss >= 518 && achievements['4'] == 0){
             setAchievements({...achievements, '4': 1})
         }
         if (achievements['0'] == 1){
             setAchievements({...achievements, '0': 2})
-            setSoulsMulti((prev) => prev * 2)
+            setSoulsMulti((prev) => prev + 2)
         }
         if (achievements['1'] == 1){
             setAchievements({...achievements, '1': 2})
-            setSoulsMulti((prev) => prev * 2)
+            setSoulsMulti((prev) => prev + 2)
         }
 
         if (achievements['2'] == 1){
             setAchievements({...achievements, '2': 2})
-            setSoulsMulti((prev) => prev * 2)
+            setSoulsMulti((prev) => prev + 2)
         }
 
         if (achievements['3'] == 1){
             setAchievements({...achievements, '3': 2})
-            setSoulsMulti((prev) => prev * 2)
+            setSoulsMulti((prev) => prev + 2)
         }
 
         if (achievements['4'] == 1){
             setAchievements({...achievements, '4': 2})
-            setSoulsMulti((prev) => prev * 2)
+            setSoulsMulti((prev) => prev + 2)
         }
         
         return () => clearTimeout(interval)
