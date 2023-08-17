@@ -40,6 +40,9 @@ export const DataProvider = ({children}) => {
     const [weapon2, setWeapon2] = useLocalStorage('weapon2', 0)
     const [weapon3, setWeapon3] = useLocalStorage('weapon3', 0)
     const [weapon4, setWeapon4] = useLocalStorage('weapon4', 0)
+    const [weapon5, setWeapon5] = useLocalStorage('weapon5', 0)
+    const [weapon6, setWeapon6] = useLocalStorage('weapon6', 0)
+    const [weapon7, setWeapon7] = useLocalStorage('weapon7', 0)
     const [weaponPM, setWeaponPM] = useLocalStorage('weaponPM', 0)
     const [weaponM, setWeaponM] = useLocalStorage('weaponM1', 0)
     const [boss, setBoss] = useLocalStorage('boss', 1)
@@ -47,14 +50,17 @@ export const DataProvider = ({children}) => {
     const [prestigeGain, setPrestigeGain] = useLocalStorage('prestigeGain', 0)
     const [name, setName] = useLocalStorage('name', '');
     const [build, setBuild] = useLocalStorage('build', -1);
-    const [time, setTime] = useLocalStorage('time', 10)
+    const [time, setTime] = useState(1000)
     const [buildFlag, setBuildFlag] = useLocalStorage('buildFlag', false)
     const [weaponPM2, setWeaponPM2] = useLocalStorage('weaponPM2', 1)
     const [prestigeTotal, setPrestigeTotal] = useLocalStorage('totalPrestige', 0)
     const [necromancerFlag, setNecromancerFlag] = useLocalStorage('necromancerFlag', false)
+    const [piromancerFlag, setPiromancerFlag] = useLocalStorage('piromancerFlag', false)
 
     const [achievements, setAchievements] = useLocalStorage('achievements', {'0': 0, '1': 0, '2': 0, '3': 0, '4': 0})
 
+    const [weaponsT2, setWeaponsT2] = useLocalStorage('weaponsT2', true)
+    const [partnerFlag, setPartnerFlag] = useLocalStorage('PartnerFlag', true)
 
     return (
     <DataContext.Provider value={{soulsMulti, powerSoulsMulti, soulsMulti2, intSoulsMulti, dexSoulsMulti, strSoulsMulti, weaponPM2, time, setTime, buildFlag, setPrestigeTotal, weaponPM, setDexSoulsMulti, setNvlPrice, setPower, setSettings, setTextColor, setBgModal,
@@ -62,8 +68,8 @@ export const DataProvider = ({children}) => {
         setPowerSoulsMulti, necromancerFlag, setNecromancerFlag, setWeaponPM2, prestigeTotal, name, build, setBuildFlag, setName, setBuild, prestige, setPrestige,
         prestigeGain, setPrestigeGain, soulsGain, setBoss, boss, weaponM, weapon1, weapon2, weapon3, weapon4, setWeapon1, setWeapon2, setWeapon3, setWeapon4, strUp1, dexUp1,
         intUp1, intUp2, setStrSoulsCo, setSoulsMulti2, setStrSoulsMulti, setStrUp1, setDexUp1, setIntUp1, setIntUp2, up1Flag, setUp1Flag, up2Flag, setUp2Flag, view, setView,
-        setSoulsMulti, nvlPrice, theme, settings, bgColor, bgModal, textColor, str, dex, int, souls, vit, nvl, health,
-        power, soulsFlag, setSouls, setBgColor, strSoulsCo, setSoulsGain, achievements, setAchievements}}>
+        setSoulsMulti, nvlPrice, theme, settings, bgColor, bgModal, textColor, str, dex, int, souls, vit, nvl, health, weapon5, setWeapon5, weapon6, setWeapon6, weapon7, setWeapon7,
+        power, soulsFlag, setSouls, setBgColor, strSoulsCo, setSoulsGain, achievements, setAchievements, piromancerFlag, setPiromancerFlag, weaponsT2, setWeaponsT2, partnerFlag, setPartnerFlag}}>
         {children}
     </DataContext.Provider>
     )

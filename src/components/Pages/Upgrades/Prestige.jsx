@@ -6,7 +6,8 @@ import { DataContext } from "../../../context/DataContext"
 
 
 const Prestige = () => {
-    const {setSoulsMulti, nvl, up1Flag, setUp1Flag, prestige, boss, setPrestige, setBuild, setPrestigeGain, prestigeGain, prestigeTotal, necromancerFlag, setNecromancerFlag, setSouls} = useContext(DataContext)
+    const {setSoulsMulti, nvl, up1Flag, setUp1Flag, prestige, boss, setPrestige, setBuild, setPrestigeGain, prestigeGain, prestigeTotal, necromancerFlag, setNecromancerFlag,
+         piromancerFlag, setPiromancerFlag, setWeaponT2, weaponT2} = useContext(DataContext)
     const {prestigeGame} = useContext(GameContext)
     const [bg1, setBg1] = useState('')
     const [bg2, setBg2] = useState('')
@@ -29,6 +30,14 @@ const Prestige = () => {
                 <button className="p-4 border border-purple-700 rounded-xl" onClick={() => unlockBuild(setNecromancerFlag, necromancerFlag, setPrestige, prestige, 50)}>
                     <p className="text-lg font-medium">Necromancer</p>
                     <p>price: 50 prestige</p>
+                </button>
+                <button className="p-4 border border-purple-700 rounded-xl" onClick={() => unlockBuild(setPiromancerFlag, piromancerFlag, setPrestige, prestige, 70)}>
+                    <p className="text-lg font-medium">Piromancer</p>
+                    <p>price: 70 prestige</p>
+                </button>
+                <button className="p-4 border border-purple-700 rounded-xl" onClick={() => unlockWeapon(setWeaponT2, weaponT2, setPrestige, prestige, 100)}>
+                    <p className="text-lg font-medium">Weapons Tier 2</p>
+                    <p>price: 100 prestige</p>
                 </button>
             </div>
         </div>

@@ -6,9 +6,11 @@ import Shop from "./Shop"
 import Boss from "./Boss"
 import Achievements from "./Achievements"
 import Info from "./Info"
+import Partner from "./Partner"
 
 import { formatNumber } from "../../helper/formatNumber"
 import { DataContext } from "../../context/DataContext"
+
 
 
 const View = () => {
@@ -51,6 +53,10 @@ const View = () => {
         }
         if (view == 5) {
             setCurrentView(<Info />)
+            return
+        }
+        if (view == 6) {
+            setCurrentView(<Partner />)
             return
         }
 

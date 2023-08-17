@@ -8,7 +8,7 @@ import {BiSolidHelpCircle} from 'react-icons/bi'
 import { DataContext } from "../../context/DataContext"
 
 const NavBar = () => {
-    const {theme, bgModal, settings, bgColor, setView} = useContext(DataContext)
+    const {theme, bgModal, settings, bgColor, setView, prestigeTotal} = useContext(DataContext)
     const {toggleTheme, openSettings} = useContext(GameContext)
     const [icon, setIcon] = useState(<BiSolidSun />)
 
@@ -26,6 +26,7 @@ const NavBar = () => {
                 <button className={` h-10 w-32 lg:h-10 rounded-lg flex items-center justify-center ${theme == 'light' ? 'hover:bg-zinc-300' : 'hover:bg-zinc-700'} ` + bgModal} onClick={() => setView(0)}>World</button>
                 <button className={` h-10 w-32 lg:h-10 rounded-lg flex items-center justify-center ${theme == 'light' ? 'hover:bg-zinc-300' : 'hover:bg-zinc-700'} ` + bgModal} onClick={() => setView(1)}>Upgrades</button>
                 <button className={` h-10 w-32 lg:h-10 rounded-lg flex items-center justify-center ${theme == 'light' ? 'hover:bg-zinc-300' : 'hover:bg-zinc-700'} ` + bgModal} onClick={() => setView(2)}>Shop</button>
+                {prestigeTotal >= 100 ? <button className={` h-10 w-32 lg:h-10 rounded-lg flex items-center justify-center ${theme == 'light' ? 'hover:bg-zinc-300' : 'hover:bg-zinc-700'} ` + bgModal} onClick={() => setView(6)}>Party</button> : null}
                 <button className={` h-10 w-32 lg:h-10 rounded-lg flex items-center justify-center ${theme == 'light' ? 'hover:bg-zinc-300' : 'hover:bg-zinc-700'} ` + bgModal} onClick={() => setView(3)}>Boss</button>
                 <button className={` h-10 w-32 lg:h-10 rounded-lg flex items-center justify-center ${theme == 'light' ? 'hover:bg-zinc-300' : 'hover:bg-zinc-700'} ` + bgModal} onClick={() => setView(4)}>Achievements</button>
             </div>
