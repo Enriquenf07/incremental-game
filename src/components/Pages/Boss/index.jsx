@@ -21,8 +21,8 @@ const Boss = () => {
         setBossHealth(() => ((boss * 10) ** 1.3) * 1.2)
         setBossPower(() => (boss * 10) ** 1.3)
         setFloor(Math.ceil(boss / 100))
-        boss > 20 ? setBossName('The Running Tree') : null
-        boss > 20 ? setBossLogo(treeLogo) : null
+        boss > 15 ? setBossName('The Running Tree') : null
+        boss > 15 ? setBossLogo(treeLogo) : null
         boss > 100 ? setBossName('The eye') : null
         boss > 100 ? setBossLogo(eyeLogo) : null
         boss > 100 ? setBg('bg-red-200') : null

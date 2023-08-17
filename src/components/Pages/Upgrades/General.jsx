@@ -12,7 +12,7 @@ const General = () => {
     const [bg1, setBg1] = useState('bg-[#ffd700] text-zinc-700')
     
     useEffect(() => {
-        setPrice((2**up1Flag) * 50)
+        setPrice((2**up1Flag) * 25)
     }, [up1Flag])
     
 

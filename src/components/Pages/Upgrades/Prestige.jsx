@@ -25,7 +25,7 @@ const Prestige = () => {
         <div className="flex flex-col justify-center items-center w-full pl-4 lg:px-0 gap-5 flex-wrap text-zinc-700">
             <p>Total Prestige: {formatNumber(prestigeTotal, 1)}</p>
             <p>Total Prestige Multiplier: {formatNumber((prestigeTotal ** 0.50) + 1, 1)}x</p>
-            {boss >= 21 || prestigeTotal >= 1 ? <button className="hover:bg-purple-300 rounded-xl w-[15rem] p-2" onClick={() => handlePrestige()}>Reset for {formatNumber(prestigeGain, 1)} prestige</button> : null}
+            {boss >= 15 || prestigeTotal >= 1 ? <button className="hover:bg-purple-300 rounded-xl w-[15rem] p-2" onClick={() => handlePrestige()}>Reset for {formatNumber(prestigeGain, 1)} prestige</button> : null}
             <div className="w-full flex flex-wrap gap-2">
                 <button className="p-4 border border-purple-700 rounded-xl" onClick={() => unlockBuild(setNecromancerFlag, necromancerFlag, setPrestige, prestige, 50)}>
                     <p className="text-lg font-medium">Necromancer</p>
