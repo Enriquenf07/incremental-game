@@ -59,7 +59,7 @@ export const DataProvider = ({children}) => {
 
     const [achievements, setAchievements] = useLocalStorage('achievements', {'0': 0, '1': 0, '2': 0, '3': 0, '4': 0})
 
-    const [weaponsT2, setWeaponsT2] = useLocalStorage('weaponsT2', true)
+    const [weaponsT2, setWeaponsT2] = useLocalStorage('weaponsT2', false)
     const [partnerFlag, setPartnerFlag] = useLocalStorage('PartnerFlag', true)
 
     return (
