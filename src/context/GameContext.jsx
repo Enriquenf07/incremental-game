@@ -272,13 +272,9 @@ export const GameProvider = ({children}) => {
         setStrSoulsMulti(() => strUp1 ? str ** (strSoulsCo + 1) : 1)
         setDexSoulsMulti(() => dexUp1 ? dex ** (dexSoulsCo + 1): 1)
         setIntSoulsMulti(() => intUp1 ? int ** (intSoulsCo + 1) : 1)
-        setPowerSoulsMulti(() => power * 0.4)
+        setPowerSoulsMulti(() => power)
         setSoulsMulti2(() => boss >= 1 ? boss + 1 ** 1.1 : boss)
         setSoulsGain(() => (((1 + soulsMulti2 + strSoulsMulti + dexSoulsMulti + intSoulsMulti + powerSoulsMulti) * (soulsMulti + ((prestigeTotal ** 0.50) + 1)))) ** 1.1 + 1)
-        if (str >= 25 && dex >= 25 || str >= 25 && dex >= 25){
-            setStr((prev) => prev + 2)
-            setDex((prev) => prev + 2)
-        }
         if (buildFlag) {
             if (build == 1) {
                 setStr(25)
